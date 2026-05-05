@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 
@@ -37,7 +38,7 @@ public class App {
     	listadoDeArgumentos.forEach(System.out::println);
     	
     	
-    	Map<String, Integer> m = new HashMap<>();
+    	/*Map<String, Integer> m = new HashMap<>();
     	
     	Integer frecuenciaOcurrencia = null ;
     	
@@ -51,6 +52,14 @@ public class App {
     		
     	}
     	
-    	System.out.println("Mapa resultante : " + m);
+    	System.out.println("Mapa resultante : " + m);*/
+    	
+    	Map<String, Long> m = listadoDeArgumentos.stream()
+    			.collect(Collectors.groupingBy(nombre -> nombre,
+    					Collectors.counting()));
+    	
+    	System.out.println("Mapa resultados: " + m);
+    	
+    	
     }
 }
